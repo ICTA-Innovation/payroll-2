@@ -33,3 +33,13 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.employee_id
+
+
+class EmployeeEducation(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    level = models.CharField(max_length=200)
+    grade = models.CharField(max_length=2)
+    major = models.CharField(max_length=200)
+
+    def __str__(self):
+        return str(self.employee)
