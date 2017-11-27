@@ -43,3 +43,14 @@ class EmployeeEducation(models.Model):
 
     def __str__(self):
         return str(self.employee)
+
+
+class EmployeeWorkExperience(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    company = models.CharField(max_length=200)
+    position = models.CharField(max_length=200)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.employee)
