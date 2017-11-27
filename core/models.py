@@ -28,7 +28,7 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=15, verbose_name='Mobile Phone')
-    status = models.CharField(max_length=1, choices=STATUS)
+    status = models.CharField(max_length=1, choices=STATUS, verbose_name='Marital Status')
     emp_status = models.CharField(verbose_name='Employment', max_length=1, choices=EMP_STATUS)
 
     def __str__(self):
