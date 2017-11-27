@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Department, Employee
+from .models import Department, Employee, EmployeeEducation
 
 
 class DepartmentAdmin(admin.ModelAdmin):
@@ -9,7 +9,15 @@ class DepartmentAdmin(admin.ModelAdmin):
     search_fields = ('department_id', 'name')
 
 
+class EmployeeEducationInline(admin.TabularInline):
+    model = EmployeeEducation
+    can_delete = True
+    extra = 1
+    verbose_name_plural = 'Employee Education'
+
+
 class EmployeeAdmin(admin.ModelAdmin):
+    inlines = [EmployeeEducationInline]
     fields = ('employee_id', ('first_name', 'last_name'), ('email', 'phone'), ('d_o_b', 'nationality'),
               'status', ('employment', 'emp_status'))
     list_display = ('employee_id', 'first_name', 'last_name', 'email', 'phone', 'd_o_b',
